@@ -21,3 +21,25 @@ docker container ls
 ```
 docker container ps
 ```
+
+Modify Docker Daemon
+
+```
+vim /etc/docker/daemon.json
+```
+```
+{
+ "live-restore":false
+}
+```
+
+Reload Docker service
+
+```
+systemctl reload docker
+```
+
+
+
+
+
