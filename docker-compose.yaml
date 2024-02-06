@@ -1,0 +1,33 @@
+version: '3.4'
+services:
+  postgres:
+    container_name: ${CONTAINER_NAME:-postgres}
+    hostname: ${CONTAINER_NAME:-postgres}
+    image: postgres:${PG_VERSION:-16-alpine}
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASS:-postgres123}
+      - POSTGRES_USER=${DB_USER:-postgres}
+      - POSTGRES_DB=${DB_NAME:-dblab}
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    networks:
+      - services
+    ports:
+      - ${PORT:-5432}:5432
+
+    restart: always
+  pgadmin:
+    container_name: pgadmin4
+    hostname: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmin123
+    ports:
+      - "5050:80"
+    networks:
+      - services 
+  
+networks: 
+  services:
+    name: ${APP_NAME:-dotin}_network
