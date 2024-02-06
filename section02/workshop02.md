@@ -53,7 +53,7 @@ cd /home
 Execute the following command inside the container
 
 ```
-psql -d postgres -U postgres -d northwind -f northwind.sql
+psql -d postgres -U postgres  -f northwind.sql
 ```
 To remove all containers
 

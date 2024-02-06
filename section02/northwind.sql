@@ -2,6 +2,7 @@
 -- PostgreSQL database dump
 --
 
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -15,7 +16,7 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
-drop database northwind;
+drop database if exists northwind;
 create database northwind;
 ---
 drop tables
