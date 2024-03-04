@@ -1,4 +1,4 @@
-#Read Only volumes:
+# Read Only volumes:
 ```
 docker volume create myvol1
 ```
@@ -102,3 +102,46 @@ tail -f ping_out
 ```
 
 ```
+
+## Docker Networking
+
+# List Docker networks:
+```
+docker network ls
+```
+
+# Creating Docker network:
+```
+dockeer network create -d bridge localnet
+```
+creates a network names `localnet` with subnet: 172.17.0.0/16, 172.18.0.0/16 , ....
+
+## Service discovery
+
+# Default bridge network
+
+```
+docker run -itd --name cent1
+```
+```
+docker run -itd --name cent2
+```
+```
+docker network inspect bridge
+```
+```
+docker attach cent1
+```
+```
+ping cent2
+```
+```
+ping 172.0.0.3
+```
+
+
+
+
+
+
+

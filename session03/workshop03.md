@@ -150,11 +150,26 @@ cd /data & ls
 ```
 docker inspect --format="{{.Mounts}}" cent1
 ```
+```
+docker ps -a --filter volume=myvol1
+```
 
 # 2. Persistence using Bind mode
 
 ```
 docker run -itd --name cent1 --mount type=bind,source=/mnt,target=/mnt cetnos
+```
+
+# To remove volumes:
+```
+docker rm myvol
+```
+```
+docker rm -f myvol
+```
+
+```
+docker volume prune
 ```
 
 # 3. Tmpfs:
