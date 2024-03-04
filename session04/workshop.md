@@ -139,7 +139,7 @@ ping cent2
 ping 172.0.0.3
 ```
 
-## Custom Network
+## User-defined Network
 
 ```
 docker network create localnet
@@ -157,9 +157,52 @@ docker attach cent3
 ping cent4
 ```
 
-Result: In user defined brdige network, we have name resolution.
+Result: There is name resolution.
 
+# Docker netork join/disjoin:
+```
+docker network connect {network-name} {container-name}
+```
+```
+docker network disconnect {network-name} {container-name}
+```
 
+# Port Mapping
+```
+docker run -itd --name mynginx --network localnet -p 5000:80 nginx:latest
+```
+```
+docker port mynginx
+```
+```
+docker inspect mynginx
+```
+```
+curl 172.17.0.2:80
+```
+
+# Exercise
+```
+docker volume create myvol
+```
+```
+docker volume ls
+```
+```
+docker run -d --name myapche -p 80:80 -v myvol:/usr/local/apache2/htdocs httpd
+```
+```
+docker ps
+```
+```
+docker port myapache
+```
+```
+cd /var/lib/docker/volume/myvol/_data/
+```
+```
+vim index.html
+```
 
 
 
