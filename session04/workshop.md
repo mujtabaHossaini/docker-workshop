@@ -204,5 +204,24 @@ cd /var/lib/docker/volume/myvol/_data/
 vim index.html
 ```
 
+# Assign static ip to container
+```
+docker network create --subnet 192.168.100.0/24 mynet
+```
+```
+docker network ls
+```
+```
+docker network inspect
+```
+```
+docker run -itd --name cent1 --network mynet --ip 192.168.100.10 centos 
+```
+```
+docker inspect mynet
+```
+```
+docker network connect --ip 192.168.100.20 mynet cent2
+```
 
 
