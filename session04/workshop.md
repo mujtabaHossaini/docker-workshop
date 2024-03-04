@@ -103,28 +103,28 @@ tail -f ping_out
 
 
 
-## Docker Networking
+# Docker Networking
 
-# List Docker networks:
+## List Docker networks:
 ```
 docker network ls
 ```
 
-# Creating Docker network:
+## Creating Docker network:
 ```
 dockeer network create -d bridge localnet
 ```
 creates a network names `localnet` with subnet: 172.17.0.0/16, 172.18.0.0/16 , ....
 
-## Service discovery
+# Service discovery
 
-# Default bridge network
+## Default bridge network
 
 ```
-docker run -itd --name cent1
+docker run -itd --name cent1 centos
 ```
 ```
-docker run -itd --name cent2
+docker run -itd --name cent2 centos
 ```
 ```
 docker network inspect bridge
@@ -139,7 +139,25 @@ ping cent2
 ping 172.0.0.3
 ```
 
+## Custom Network
 
+```
+docker network create localnet
+```
+```
+docker run -itd --name cent3 --network localnet centos
+```
+```
+docker run -itd --name cent4 --network localnet centos
+```
+```
+docker attach cent3
+```
+```
+ping cent4
+```
+
+Result: In user defined brdige network, we have name resolution.
 
 
 
