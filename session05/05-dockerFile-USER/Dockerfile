@@ -1,4 +1,4 @@
-iFROM centos:latest
+FROM centos:latest
 ENV myvar=123
 RUN useradd sara
 USER sara

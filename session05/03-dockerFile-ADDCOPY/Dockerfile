@@ -1,4 +1,4 @@
-iFROM centos:latest
+FROM centos:latest
 LABEL name=mujtaba
 LABEL exercise=22
 LABEL description="exercise 22 - COPY instruction"
