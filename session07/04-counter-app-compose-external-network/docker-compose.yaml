@@ -1,0 +1,12 @@
+version: '3'
+services:
+      web:
+          build: .
+          ports:
+            - "5000:5000"
+      redis:
+          image: "redis:alpine"
+networks:
+      default:
+          external:
+                name: mynetwork-200
